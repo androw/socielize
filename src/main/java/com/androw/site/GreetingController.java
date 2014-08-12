@@ -21,6 +21,7 @@ public class GreetingController {
     private static FlightDB db = new FlightDB();
 
     private static List<Flight> flightList = new ArrayList<Flight>();
+    private static List<User> userList = new ArrayList<User>();
 
     private static User testUser = new User("androw95220@gmail.com", "Nicolas", "Lorin");
 

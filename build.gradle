@@ -27,7 +27,10 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.security:spring-security-core:3.2.4.RELEASE")
+    compile("org.springframework.security:spring-security-config:3.2.4.RELEASE")
+    compile("org.springframework.security:spring-security-web:3.2.4.RELEASE")
+    compile("org.springframework.security:spring-security-taglibs:3.2.4.RELEASE")
     compile("org.springframework:spring-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
     testCompile("junit:junit")
