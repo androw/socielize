@@ -7,10 +7,7 @@ import com.androw.socielize.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -79,5 +76,21 @@ public class GreetingController {
         model.addAttribute("flights", testUser.getFlights());
         model.addAttribute("user", testUser);
         return "yourFlights";
+    }
+
+    @RequestMapping(value = "/onFlight/{flightId}")
+    public String addFlight(@PathVariable("flightId") String flightId, @RequestParam(value = "date", required = false, defaultValue = "today") String date, Model model) {
+        Flight search = new Flight(flightId.substring(0,2),flightId.substring(2),date);
+        if (flightList.contains(search)) {
+            Flight oldFlight = flightList.get(flightList.indexOf(search));
+            model.addAttribute("find", true);
+            model.addAttribute("flight", oldFlight);
+            model.addAttribute("passengers", oldFlight.getUsers());
+        } else {
+            model.addAttribute("find", false);
+            model.addAttribute("flight", search);
+        }
+        model.addAttribute("user", testUser);
+        return "onFlight";
     }
 }

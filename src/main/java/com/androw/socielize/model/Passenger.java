@@ -14,15 +14,15 @@ public class Passenger {
         this.seatRow = seatRow;
         this.seat = seat;
         this.flight = flight;
-        this.user.addPassengers(this);
-        this.flight.addPassengers(this);
+        this.user.addPassenger(this);
+        this.flight.addPassenger(this);
     }
 
     public Passenger(User user, Flight flight) {
         this.user = user;
         this.flight = flight;
-        this.user.addPassengers(this);
-        this.flight.addPassengers(this);
+        this.user.addPassenger(this);
+        this.flight.addPassenger(this);
     }
 
     public User getUser() {

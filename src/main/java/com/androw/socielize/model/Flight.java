@@ -16,6 +16,7 @@ public class Flight {
     @Size(min = 3, max = 4)
     private String flightNumber;
     @NotNull
+    @Size(min = 10, max = 10)
     private String dateString;
     private List<Passenger> passengers;
 
@@ -26,6 +27,13 @@ public class Flight {
     public Flight(String carrier, String flightNumber) {
         this.carrier = carrier;
         this.flightNumber = flightNumber;
+        this.passengers = new ArrayList<Passenger>();
+    }
+
+    public Flight(String carrier, String flightNumber, String dateString) {
+        this.carrier = carrier;
+        this.flightNumber = flightNumber;
+        this.dateString = dateString;
         this.passengers = new ArrayList<Passenger>();
     }
 
@@ -53,9 +61,17 @@ public class Flight {
         this.dateString = date;
     }
 
-    public void addPassengers(Passenger passenger) {
+    public void addPassenger(Passenger passenger) {
         if (!this.passengers.contains(passenger))
             this.passengers.add(passenger);
+    }
+
+    public List<User> getUsers() {
+        ArrayList<User> users = new ArrayList<User>();
+        for (Passenger passenger : this.passengers) {
+            users.add(passenger.getUser());
+        }
+        return users;
     }
 
     @Override
