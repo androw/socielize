@@ -15,7 +15,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'com.androw.site'
+    baseName = 'com.androw.socielize'
     version =  '0.1.0'
 }
 
