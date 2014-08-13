@@ -1,4 +1,4 @@
-package com.androw.site.model;
+package com.androw.socielize.model;
 
 import java.util.ArrayList;
 import java.util.List;

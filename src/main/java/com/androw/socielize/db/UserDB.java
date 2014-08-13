@@ -1,4 +1,4 @@
-package com.androw.site.db;
+package com.androw.socielize.db;
 
 /**
  * Created by Androw on 12/08/2014.

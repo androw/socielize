@@ -1,4 +1,4 @@
-package com.androw.site.model;
+package com.androw.socielize.model;
 
 /**
  * Created by Androw on 12/08/2014.

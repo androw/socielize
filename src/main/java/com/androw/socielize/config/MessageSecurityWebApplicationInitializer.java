@@ -1,4 +1,4 @@
-package com.androw.site.config;
+package com.androw.socielize.config;
 
 /**
  * Created by Androw on 12/08/2014.

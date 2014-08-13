@@ -1,9 +1,9 @@
-package com.androw.site;
+package com.androw.socielize;
 
-import com.androw.site.db.FlightDB;
-import com.androw.site.model.Flight;
-import com.androw.site.model.Passenger;
-import com.androw.site.model.User;
+import com.androw.socielize.db.FlightDB;
+import com.androw.socielize.model.Flight;
+import com.androw.socielize.model.Passenger;
+import com.androw.socielize.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
