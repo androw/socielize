@@ -46,10 +46,8 @@
     <orderEntry type="library" exported="" name="Gradle: tomcat-embed-el-7.0.54" level="project" />
     <orderEntry type="library" exported="" name="Gradle: tomcat-embed-logging-juli-7.0.54" level="project" />
     <orderEntry type="library" exported="" name="Gradle: validation-api-1.1.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: jboss-logging-3.1.1.GA" level="project" />
     <orderEntry type="library" exported="" name="Gradle: classmate-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: ognl-3.0.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: javassist-3.16.1-GA" level="project" />
     <orderEntry type="library" exported="" name="Gradle: unbescape-1.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: logback-core-1.1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.7" level="project" />
@@ -60,8 +58,16 @@
     <orderEntry type="library" exported="" name="Gradle: spring-security-web-3.2.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-security-taglibs-3.2.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-security-acl-3.2.4.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: spring-jdbc-3.2.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: spring-tx-3.2.8.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-orm-4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-tx-4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-jdbc-4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jboss-logging-3.1.1.GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javassist-3.16.1-GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cglib-3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: asm-4.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mongo-java-driver-2.12.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-data-mongodb-1.6.0.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-data-commons-1.9.0.BUILD-SNAPSHOT" level="project" />
   </component>
 </module>
 

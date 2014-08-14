@@ -1,14 +1,23 @@
 package com.androw.socielize.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by Androw on 12/08/2014.
  */
-public class Flight {
+@Document(collection = "flights")
+public class Flight implements Serializable {
+    @Id
+    private String id;
     @NotNull
     @Size(min = 2, max = 2)
     private String carrier;
@@ -18,6 +27,7 @@ public class Flight {
     @NotNull
     @Size(min = 10, max = 10)
     private String dateString;
+    @DBRef
     private List<Passenger> passengers;
 
     public Flight() {
@@ -35,6 +45,14 @@ public class Flight {
         this.flightNumber = flightNumber;
         this.dateString = dateString;
         this.passengers = new ArrayList<Passenger>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCarrier() {
