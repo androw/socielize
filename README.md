@@ -1,5 +1,7 @@
 Socielize by Androw
 
+[![Codeship Status for androw/socielize](https://www.codeship.io/projects/b84e0df0-05c9-0132-463b-2647e7991c40/status)](https://www.codeship.io/projects/30948)
+
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
