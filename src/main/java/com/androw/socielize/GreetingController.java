@@ -99,7 +99,8 @@ public class GreetingController {
             model.addAttribute("flight", search);
         }
         model.addAttribute("user", currUser);
-        return "onFlight";
+        model.addAttribute("content", "onFlight");
+        return "two-cols-layout";
     }
 
     private User getCurrentUser() {
