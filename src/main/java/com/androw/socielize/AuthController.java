@@ -27,9 +27,8 @@ public class AuthController {
     private ShaPasswordEncoder passwordEncoder;
 
     @RequestMapping("/login")
-    public String login(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "index";
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
@@ -39,7 +38,7 @@ public class AuthController {
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public String registerSubmit(@Valid User user, BindingResult result, Model model) {
+    public String registerSubmit(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }

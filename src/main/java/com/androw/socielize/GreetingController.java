@@ -8,6 +8,8 @@ import com.androw.socielize.model.Flight;
 import com.androw.socielize.model.Passenger;
 import com.androw.socielize.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,7 +46,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.GET)
     public String addFlight(Model model) {
-        User currUser = users.findByEmail("androw95220@gmail.com");
+        User currUser = getCurrentUser();
         model.addAttribute("flight", new Flight());
         model.addAttribute("user", currUser);
         return "addFlight";
@@ -52,7 +54,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.POST)
     public String addFlightSubmit(@Valid Flight flight, BindingResult result, Model model) {
-        User currUser = users.findByEmail("androw95220@gmail.com");
+        User currUser = getCurrentUser();
         if (result.hasErrors()) {
             model.addAttribute("user", currUser);
             return "addFlight";
@@ -75,7 +77,7 @@ public class GreetingController {
 
     @RequestMapping("/yourFlights")
     public String yourFlights(Model model) {
-        User currUser = users.findByEmail("androw95220@gmail.com");
+        User currUser = getCurrentUser();
         model.addAttribute("flights", currUser.getFlights());
         model.addAttribute("user", currUser);
         return "yourFlights";
@@ -83,7 +85,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/onFlight/{flightId}")
     public String addFlight(@PathVariable("flightId") String flightId, @RequestParam(value = "date", required = false, defaultValue = "today") String date, Model model) {
-        User currUser = users.findByEmail("androw95220@gmail.com");
+        User currUser = getCurrentUser();
         Flight search = new Flight(flightId.substring(0, 2), flightId.substring(2), date);
         Flight oldFlight = flights.findByCarrierAndFlightNumberAndDateString(search.getCarrier(), search.getFlightNumber(), search.getDateString());
         if (oldFlight != null) {
@@ -96,5 +98,11 @@ public class GreetingController {
         }
         model.addAttribute("user", currUser);
         return "onFlight";
+    }
+
+    private User getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        return users.findByEmail(email);
     }
 }
