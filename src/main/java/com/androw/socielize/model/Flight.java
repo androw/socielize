@@ -1,10 +1,12 @@
 package com.androw.socielize.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,11 +21,18 @@ public class Flight implements Serializable {
     @Id
     private String id;
     @NotNull
+    @NotEmpty
     @Size(min = 2, max = 2)
+    @Pattern(regexp="^[A-Z][A-Z]$")
     private String carrier;
+
     @NotNull
+    @NotEmpty
     @Size(min = 3, max = 4)
+    @Pattern(regexp="^[0-9][0-9][0-9][0-9]?$")
     private String flightNumber;
+
+    @NotEmpty
     @NotNull
     @Size(min = 10, max = 10)
     private String dateString;
