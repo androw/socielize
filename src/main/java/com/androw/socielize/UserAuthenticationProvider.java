@@ -18,14 +18,14 @@ import java.util.ArrayList;
  * Created by Androw on 15/08/2014.
  */
 @Component
-public class LoginHandler implements AuthenticationProvider {
+public class UserAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserRepository users;
 
     @Autowired
     private ShaPasswordEncoder passwordEncoder;
 
-    public LoginHandler() {
+    public UserAuthenticationProvider() {
     }
 
     public Authentication authenticate(Authentication login) {
