@@ -35,6 +35,7 @@ public class LoginHandler implements AuthenticationProvider {
         }
         ArrayList<GrantedAuthority> right = new ArrayList<GrantedAuthority>();
         right.add(new SimpleGrantedAuthority("ROLE_USER"));
+        if (user.isAdmin()) right.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         Authentication authUser = new UsernamePasswordAuthenticationToken(login.getPrincipal(), login.getCredentials(), right);
         return authUser;
     }

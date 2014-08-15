@@ -108,6 +108,10 @@ public class User implements Serializable {
             this.passengers.add(passenger);
     }
 
+    public boolean isAdmin() {
+        return false;
+    }
+
     public List<Flight> getFlights() {
         ArrayList<Flight> flights = new ArrayList<Flight>();
         for (Passenger passenger : this.passengers) {
