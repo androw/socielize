@@ -1,8 +1,8 @@
 package com.androw.socielize;
 
 import com.androw.socielize.db.UserRepository;
+import com.androw.socielize.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,11 +29,12 @@ public class LoginHandler implements AuthenticationProvider {
     }
 
     public Authentication authenticate(Authentication login) {
-        if (users.findByEmailAndPassword(login.getName(), passwordEncoder.encodePassword((String) login.getCredentials(), login.getName()) ) == null) {
+        User user = users.findByEmailAndPassword(login.getName(), passwordEncoder.encodePassword((String) login.getCredentials(), login.getName()));
+        if (user == null) {
             throw new BadCredentialsException("Bad credentials");
         }
-        ArrayList<GrantedAuthority> right = new ArrayList<>();
-        right.add(new SimpleGrantedAuthority("USER"));
+        ArrayList<GrantedAuthority> right = new ArrayList<GrantedAuthority>();
+        right.add(new SimpleGrantedAuthority("ROLE_USER"));
         Authentication authUser = new UsernamePasswordAuthenticationToken(login.getPrincipal(), login.getCredentials(), right);
         return authUser;
     }
