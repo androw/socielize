@@ -1,10 +1,14 @@
 package com.androw.socielize.model;
 
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +20,25 @@ import java.util.List;
 public class User implements Serializable {
     @Id
     private String id;
+
+    @NotNull
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
+    @NotNull
     private String lastName;
+
+    @NotEmpty
+    @NotNull
+    @Email
     private String email;
+
+    @NotNull
+    @NotEmpty
+    @Size(min=6, max=20)
+    private String password;
+
     private String desc;
     @DBRef
     private List<Passenger> passengers;
@@ -29,6 +49,18 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.desc = "";
         this.passengers = new ArrayList<Passenger>();
+    }
+
+    public User() {
+        this.passengers = new ArrayList<Passenger>();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getId() {
