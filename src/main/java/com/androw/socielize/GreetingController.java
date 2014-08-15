@@ -40,27 +40,7 @@ public class GreetingController {
         return db.getIATAList(query);
     }
 
-    @RequestMapping("/login")
-    public String login(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "index";
-    }
 
-    @RequestMapping(value="/register", method = RequestMethod.GET)
-    public String register(Model model) {
-        model.addAttribute("name", "World");
-        return "index";
-    }
-
-    @RequestMapping(value="/register", method = RequestMethod.POST)
-    public String registerSubmit(@Valid User user, BindingResult result, Model model) {
-        User currUser = users.findByEmail("androw95220@gmail.com");
-        if (result.hasErrors()) {
-            model.addAttribute("user", currUser);
-            return "register";
-        }
-        return "redirect:/yourFlights";
-    }
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.GET)
     public String addFlight(Model model) {
