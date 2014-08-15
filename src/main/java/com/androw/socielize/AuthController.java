@@ -25,23 +25,27 @@ public class AuthController {
     private ShaPasswordEncoder passwordEncoder;
 
     @RequestMapping("/login")
-    public String login() {
-        return "login";
+    public String login(Model model) {
+        model.addAttribute("content", "login");
+        return "two-cols-layout";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String register(Model model) {
         model.addAttribute("user", new User());
-        return "register";
+        model.addAttribute("content", "register");
+        return "two-cols-layout";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public String registerSubmit(@Valid User user, BindingResult result) {
+    public String registerSubmit(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "register";
+            model.addAttribute("content", "register");
+            return "two-cols-layout";
         } else if (users.findByEmail(user.getEmail()) != null) {
             result.addError(new ObjectError("email", "Already registered"));
-            return "register";
+            model.addAttribute("content", "register");
+            return "two-cols-layout";
         } else {
             user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
             users.save(user);
