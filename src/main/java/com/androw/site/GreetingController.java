@@ -78,6 +78,7 @@ public class GreetingController {
     public String yourFlights(Model model) {
         model.addAttribute("flights", testUser.getFlights());
         model.addAttribute("user", testUser);
-        return "yourFlights";
+        model.addAttribute("content", "yourFlights");
+        return "two-cols-layout";
     }
 }
