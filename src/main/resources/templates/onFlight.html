@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Bootstrap 101 Template</title>
+    <title>People onboard</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
@@ -22,8 +22,25 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<h1>People onboard</h1>
 
-<p th:text="'Hello, ' + ${name} + '!'"/>
+<p th:text="'Hello, ' + ${user.firstName} + '!'"/>
+
+<p th:text="'People on flight ' + ${flight.carrier} + ${flight.flightNumber} +' on the ' + ${flight.dateString} +'.'"/>
+
+<table th:if="${find}" class="table">
+<thead>
+<tr>
+    <th>Firstname</th>
+    <th>Description</th>
+</tr>
+</thead>
+    <tbody>
+    <tr th:each="passenger : ${passengers}">
+    <td th:text="${passenger.firstName}"></td>
+    <td th:text="${passenger.desc}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

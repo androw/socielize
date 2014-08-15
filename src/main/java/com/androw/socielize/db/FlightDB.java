@@ -1,4 +1,4 @@
-package com.androw.site.db;
+package com.androw.socielize.db;
 
 import java.util.ArrayList;
 import java.util.List;

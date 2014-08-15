@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/site.iml" filepath="$PROJECT_DIR$/site.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socielize.iml" filepath="$PROJECT_DIR$/socielize.iml" />
     </modules>
   </component>
 </project>

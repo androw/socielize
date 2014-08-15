@@ -1,12 +1,22 @@
-package com.androw.site.model;
+package com.androw.socielize.model;
+
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by Androw on 12/08/2014.
  */
+@Document(collection = "passengers")
 public class Passenger {
+    @Id
+    private String id;
+    @DBRef
     private User user;
     private int seatRow;
     private String seat;
+    @DBRef
     private Flight flight;
 
     public Passenger(User user, int seatRow, String seat, Flight flight) {
@@ -14,15 +24,27 @@ public class Passenger {
         this.seatRow = seatRow;
         this.seat = seat;
         this.flight = flight;
-        this.user.addPassengers(this);
-        this.flight.addPassengers(this);
+        this.user.addPassenger(this);
+        this.flight.addPassenger(this);
     }
 
     public Passenger(User user, Flight flight) {
         this.user = user;
         this.flight = flight;
-        this.user.addPassengers(this);
-        this.flight.addPassengers(this);
+        this.user.addPassenger(this);
+        this.flight.addPassenger(this);
+    }
+
+    public Passenger() {
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public User getUser() {

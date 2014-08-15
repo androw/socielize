@@ -1,22 +1,42 @@
-package com.androw.site.model;
+package com.androw.socielize.model;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by Androw on 12/08/2014.
  */
-public class Flight {
+@Document(collection = "flights")
+public class Flight implements Serializable {
+    @Id
+    private String id;
     @NotNull
+    @NotEmpty
     @Size(min = 2, max = 2)
+    @Pattern(regexp="^[A-Z][A-Z]$")
     private String carrier;
+
     @NotNull
+    @NotEmpty
     @Size(min = 3, max = 4)
+    @Pattern(regexp="^[0-9][0-9][0-9][0-9]?$")
     private String flightNumber;
+
+    @NotEmpty
     @NotNull
+    @Size(min = 10, max = 10)
     private String dateString;
+    @DBRef
     private List<Passenger> passengers;
 
     public Flight() {
@@ -27,6 +47,21 @@ public class Flight {
         this.carrier = carrier;
         this.flightNumber = flightNumber;
         this.passengers = new ArrayList<Passenger>();
+    }
+
+    public Flight(String carrier, String flightNumber, String dateString) {
+        this.carrier = carrier;
+        this.flightNumber = flightNumber;
+        this.dateString = dateString;
+        this.passengers = new ArrayList<Passenger>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCarrier() {
@@ -53,9 +88,17 @@ public class Flight {
         this.dateString = date;
     }
 
-    public void addPassengers(Passenger passenger) {
+    public void addPassenger(Passenger passenger) {
         if (!this.passengers.contains(passenger))
             this.passengers.add(passenger);
+    }
+
+    public List<User> getUsers() {
+        ArrayList<User> users = new ArrayList<User>();
+        for (Passenger passenger : this.passengers) {
+            users.add(passenger.getUser());
+        }
+        return users;
     }
 
     @Override

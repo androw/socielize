@@ -1,4 +1,4 @@
-package com.androw.site;
+package com.androw.socielize;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
