@@ -32,7 +32,6 @@ public class GreetingController {
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
-        users.save(new User("androw95220@gmail.com", "Nicolas", "Lorin"));
         return "index";
     }
 
@@ -42,7 +41,6 @@ public class GreetingController {
     List<String> getIATAList(@RequestParam("term") String query) {
         return db.getIATAList(query);
     }
-
 
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.GET)
