@@ -19,7 +19,7 @@ public class AdminController {
     @Autowired
     private FlightRepository flights;
 
-    @RequestMapping("/listUsers")
+    @RequestMapping("/admin/listUsers")
     public String listUsers(Model model) {
         model.addAttribute("users", users.findAll());
         return "listUsers";
