@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Add a Flight</title>
+    <title th:fragment="title">Add a Flight</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
@@ -22,39 +22,50 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Add a Flight</h1>
+<div th:fragment="content">
 
-<p th:text="'Hello, ' + ${user.firstName} + '!'"/>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+		<h1 th:text="'Hello, ' + ${user.firstName} + '!'">Hello, world!</h1>
+	</div>
 
-<form action="#" th:action="@{/addFlight}" th:object="${flight}" method="post">
-    <table class="table">
-        <tr>
-            <td>Flight Carrier: </td>
-            <td><input class="dropdown" id="carrier" type="text" th:field="*{carrier}"/></td>
-            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('carrier')}" th:errors="*{carrier}">Error</td>
-        </tr>
-        <tr>
-            <td>Flight number: </td>
-            <td><input type="number" th:field="*{flightNumber}"/></td>
-            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('flightNumber')}" th:errors="*{flightNumber}">Error</td>
-        </tr>
-        <tr>
-            <td>Flight date: </td>
-            <td><input type="date" th:field="*{dateString}"/></td>
-            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dateString')}" th:errors="*{dateString}">Error</td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></td>
-        </tr>
-    </table>
-</form>
+    <div class="page-header">
+        <h1>Add flight</h1>
+    </div>
 
-<script type="text/javascript">
+    <div class="row">
+		<form action="#" th:action="@{/addFlight}" th:object="${flight}" method="post">
+		    <table class="table">
+		        <tr>
+		            <td>Flight Carrier: </td>
+		            <td><input class="dropdown" id="carrier" type="text" th:field="*{carrier}"/></td>
+		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('carrier')}" th:errors="*{carrier}">Error</td>
+		        </tr>
+		        <tr>
+		            <td>Flight number: </td>
+		            <td><input type="number" th:field="*{flightNumber}" max="9999"/></td>
+		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('flightNumber')}" th:errors="*{flightNumber}">Error</td>
+		        </tr>
+		        <tr>
+		            <td>Flight date: </td>
+		            <td><input type="date" th:field="*{dateString}"/></td>
+		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dateString')}" th:errors="*{dateString}">Error</td>
+		        </tr>
+		        <tr>
+		            <td><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></td>
+		        </tr>
+		    </table>
+		</form>
+		</div>
+</div>
+
+<script type="text/javascript" th:fragment="scripts">
     $(document).ready(function () {
         $("#carrier").autocomplete({
             source: '/getIATAList'
         });
     });
 </script>
+
 </body>
 </html>
