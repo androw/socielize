@@ -3,6 +3,8 @@ package com.androw.socielize;
 import com.androw.socielize.db.UserRepository;
 import com.androw.socielize.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ import javax.validation.Valid;
 public class AuthController {
     @Autowired
     private UserRepository users;
+
+    @Autowired
+    private ShaPasswordEncoder passwordEncoder;
 
     @RequestMapping("/login")
     public String login(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
@@ -42,7 +47,9 @@ public class AuthController {
             result.addError(new ObjectError("email", "Already registered"));
             return "register";
         }
+        user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
         users.save(user);
         return "redirect:/login";
     }
+
 }
