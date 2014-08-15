@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
-<body th:fragment="content">
-<h1>Hello, world!</h1>
-<p th:text="'Hello, ' + ${user.firstName} + '!'" />
-<table class="table">
-<thead>
-<tr>
-    <th>Carrier</th>
-    <th>Flight Number</th>
-    <th>Date</th>
-</tr>
-</thead>
-    <tbody>
-<tr th:each="flight : ${flights}">
-    <td th:text="${flight.carrier}"></td>
-    <td th:text="${flight.flightNumber}"></td>
-    <td th:text="${flight.dateString}"></td>
-</tr>
-</tbody>
-</table>
+<head>
+<title th:fragment="title">Yours flights</title>
+</head>
+<body>
+<div th:fragment="content">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+		<h1 th:text="'Hello, ' + ${user.firstName} + '!'">Hello, world!</h1>
+	</div>
+
+    <div class="page-header">
+        <h1>Your flights</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+				<tr>
+				    <th>Carrier</th>
+				    <th>Flight Number</th>
+				    <th>Date</th>
+				</tr>
+            </thead>
+            <tbody>
+				<tr th:each="flight : ${flights}">
+				    <td th:text="${flight.carrier}"></td>
+				    <td th:text="${flight.flightNumber}"></td>
+				    <td th:text="${flight.dateString}"></td>
+				</tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

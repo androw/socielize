@@ -30,6 +30,7 @@ public class GreetingController {
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
+        users.save(new User("androw95220@gmail.com", "Nicolas", "Lorin"));
         return "index";
     }
 
@@ -67,7 +68,8 @@ public class GreetingController {
         User currUser = users.findByEmail("androw95220@gmail.com");
         model.addAttribute("flight", new Flight());
         model.addAttribute("user", currUser);
-        return "addFlight";
+        model.addAttribute("content", "addFlight");
+        return "two-cols-layout";
     }
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.POST)
@@ -75,7 +77,8 @@ public class GreetingController {
         User currUser = users.findByEmail("androw95220@gmail.com");
         if (result.hasErrors()) {
             model.addAttribute("user", currUser);
-            return "addFlight";
+            model.addAttribute("content", "addFlight");
+            return "two-cols-layout";
         }
         Flight oldFlight = flights.findByCarrierAndFlightNumberAndDateString(flight.getCarrier(), flight.getFlightNumber(), flight.getDateString());
         if (oldFlight != null) {
