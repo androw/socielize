@@ -74,15 +74,15 @@ public class GreetingController {
             flights.save(flight);
             users.save(currUser);
         }
-        return "redirect:/yourFlights";
+        return "redirect:/myFlights";
     }
 
-    @RequestMapping("/yourFlights")
-    public String yourFlights(Model model) {
+    @RequestMapping("/myFlights")
+    public String myFlights(Model model) {
         User currUser = getCurrentUser();
         model.addAttribute("flights", currUser.getFlights());
         model.addAttribute("user", currUser);
-        model.addAttribute("content", "yourFlights");
+        model.addAttribute("content", "myFlights");
         return "two-cols-layout";
     }
 
