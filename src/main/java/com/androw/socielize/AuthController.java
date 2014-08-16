@@ -7,6 +7,7 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,14 +46,13 @@ public class AuthController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerSubmit(@Valid User user, BindingResult result, Model model) {
+        if (users.findByEmail(user.getEmail()) != null) {
+            result.addError(new FieldError("user", "email", "Already registered"));
+        }
         if (result.hasErrors()) {
             model.addAttribute("content", "register");
             return "two-cols-layout";
-        } else if (users.findByEmail(user.getEmail()) != null) {
-            result.addError(new ObjectError("email", "Already registered"));
-            model.addAttribute("content", "register");
-            return "two-cols-layout";
-        } else {
+        }  else {
             user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
             users.save(user);
             return "redirect:/login";
