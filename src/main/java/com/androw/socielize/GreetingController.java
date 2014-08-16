@@ -98,7 +98,7 @@ public class GreetingController {
         return "two-cols-layout";
     }
 
-    @RequestMapping(value = "/onFlight/{flightId}")
+    @RequestMapping(value = "/user/onFlight/{flightId}")
     public String addFlight(@PathVariable("flightId") String flightId, @RequestParam(value = "date", required = false, defaultValue = "today") String date, Model model) {
         User currUser = getCurrentUser();
         Flight search = new Flight(flightId.substring(0, 2), flightId.substring(2), date);
