@@ -7,10 +7,10 @@ import java.util.StringTokenizer;
 /**
  * Created by Androw on 12/08/2014.
  */
-public class FlightDB {
+public class AutoCompletionDB {
     private List<String> iatas;
 
-    public FlightDB() {
+    public AutoCompletionDB() {
         String data = "AA, AB, AC, AD, AE, AF, AG, AH, AI, DB";
         this.iatas = new ArrayList<String>();
         StringTokenizer st = new StringTokenizer(data, ",");
