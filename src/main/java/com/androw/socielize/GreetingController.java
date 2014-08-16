@@ -32,7 +32,8 @@ public class GreetingController {
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
-        return "index";
+        model.addAttribute("content", "index");
+        return "two-cols-layout";
     }
 
     @RequestMapping(value = "/getIATAList", method = RequestMethod.GET, headers = "Accept=*/*")
