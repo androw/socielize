@@ -5,40 +5,39 @@
 </head>
 <body>
 <div th:fragment="content">
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-		<h1 th:text="'Hello, ' + ${user.firstName} + '!'">Hello, world!</h1>
-	</div>
-
     <div class="page-header">
-        <h1>Add flight</h1>
+        <h1>Add a flight</h1>
     </div>
 
-    <div class="row">
-        <form action="#" th:action="@{/user/addFlight}" th:object="${flight}" method="post">
-        <table class="table">
-		        <tr>
-		            <td>Flight Carrier: </td>
-		            <td><input class="dropdown" id="carrier" type="text" th:field="*{carrier}"/></td>
-		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('carrier')}" th:errors="*{carrier}">Error</td>
-		        </tr>
-		        <tr>
-		            <td>Flight number: </td>
-		            <td><input type="number" th:field="*{flightNumber}" max="9999"/></td>
-		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('flightNumber')}" th:errors="*{flightNumber}">Error</td>
-		        </tr>
-		        <tr>
-		            <td>Flight date: </td>
-		            <td><input type="date" th:field="*{dateString}"/></td>
-		            <td class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dateString')}" th:errors="*{dateString}">Error</td>
-		        </tr>
-		        <tr>
-		            <td><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></td>
-		        </tr>
-		    </table>
-		</form>
-		</div>
+    <form action="#" th:action="@{/user/addFlight}" th:object="${flight}" method="post" role="form">
+        <div class="input-group form-group">
+            <span class="input-group-addon">Carrier</span>
+            <input class="form-control" id="carrier" type="text" th:field="*{carrier}"/>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('carrier')}" th:errors="*{carrier}">
+                Error
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <span class="input-group-addon">Number</span>
+            <input class="form-control" type="number" th:field="*{flightNumber}" max="9999"/>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('flightNumber')}"
+                 th:errors="*{flightNumber}">Error
+            </div>
+
+        </div>
+        <div class="input-group form-group">
+            <span class="input-group-addon">Date</span>
+            <input class="form-control" type="date" th:field="*{dateString}"/>
+<span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Go!</button>
+      </span>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dateString')}"
+                 th:errors="*{dateString}">Error
+            </div>
+        </div>
+    </form>
 </div>
 
 <script type="text/javascript" th:fragment="scripts">

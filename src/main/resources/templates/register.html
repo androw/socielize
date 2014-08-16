@@ -5,33 +5,49 @@
 </head>
 <body>
 <div th:fragment="content">
-<form action="#" th:action="@{/register}" th:object="${user}" method="post" role="form">
-            <legend>Please Register</legend>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post" role="form">
+        <legend>Please Register</legend>
 
-    <div class="input-group form-group">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-
-            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="Firstname" th:field="*{firstName}"/>
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</div>
-</div>
         <div class="input-group form-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Lastname" th:field="*{lastName}"/>
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</div>
-</div>
-    <div class="input-group form-group">
-        <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-            <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="contact@socielize.eu"/>
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
-</div>
-    <div class="input-group form-group">
-        <span class="input-group-addon"><span class="fa fa-key"></span></span>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}"/>
+
+            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="Firstname"
+                   th:field="*{firstName}"/>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstName')}"
+                 th:errors="*{firstName}">Error
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Lastname"
+                   th:field="*{lastName}"/>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lastName')}"
+                 th:errors="*{lastName}">Error
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
+            <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
+                   placeholder="contact@socielize.eu"/>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                Error
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <span class="input-group-addon"><span class="fa fa-key"></span></span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                   th:field="*{password}"/>
 
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Go!</button>
         </span>
-        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</div>
+
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}"
+                 th:errors="*{password}">Error
+            </div>
         </div>
     </form>
 </div>
