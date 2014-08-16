@@ -36,6 +36,12 @@ public class GreetingController {
         return "two-cols-layout";
     }
 
+    @RequestMapping("/about")
+    public String about(Model model) {
+        model.addAttribute("content", "about");
+        return "two-cols-layout";
+    }
+
     @RequestMapping(value = "/getIATAList", method = RequestMethod.GET, headers = "Accept=*/*")
     public
     @ResponseBody
@@ -43,6 +49,12 @@ public class GreetingController {
         return db.getIATAList(query);
     }
 
+    @RequestMapping("/findFlight")
+    public String findFlight(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("name", name);
+        model.addAttribute("content", "index");
+        return "two-cols-layout";
+    }
 
     @RequestMapping(value = "/addFlight", method = RequestMethod.GET)
     public String addFlight(Model model) {
