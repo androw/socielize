@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
 </head>
 <body>
@@ -20,18 +20,18 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/findFlight">Find a Flight</a></li>
-            <li><a href="/addFlight">Add a Flight</a></li>
-            <li><a href="/register">Register</a></li>
+              <li><a href="/user/addFlight">Add a Flight</a></li>
+              <li><a href="/register">Register</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/about#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="/myFlights">My Flights</a></li>
-                <li class="divider"></li>
+                  <li><a href="/user/myFlights">My Flights</a></li>
+                  <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
-                <li><a href="/myAccount">Account Settings</a></li>
-                <li><a href="/logout">Logout</a></li>
+                  <li><a href="/user/myAccount">Account Settings</a></li>
+                  <li><a href="/user/logout">Logout</a></li>
               </ul>
             </li>
           </ul>

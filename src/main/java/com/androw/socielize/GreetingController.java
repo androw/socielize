@@ -56,7 +56,7 @@ public class GreetingController {
         return "two-cols-layout";
     }
 
-    @RequestMapping(value = "/addFlight", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/addFlight", method = RequestMethod.GET)
     public String addFlight(Model model) {
         User currUser = getCurrentUser();
         model.addAttribute("flight", new Flight());
@@ -65,7 +65,7 @@ public class GreetingController {
         return "two-cols-layout";
     }
 
-    @RequestMapping(value = "/addFlight", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/addFlight", method = RequestMethod.POST)
     public String addFlightSubmit(@Valid Flight flight, BindingResult result, Model model) {
         User currUser = getCurrentUser();
         if (result.hasErrors()) {
@@ -86,10 +86,10 @@ public class GreetingController {
             flights.save(flight);
             users.save(currUser);
         }
-        return "redirect:/myFlights";
+        return "redirect:/user/myFlights";
     }
 
-    @RequestMapping("/myFlights")
+    @RequestMapping("/user/myFlights")
     public String myFlights(Model model) {
         User currUser = getCurrentUser();
         model.addAttribute("flights", currUser.getFlights());

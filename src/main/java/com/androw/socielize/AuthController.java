@@ -30,20 +30,20 @@ public class AuthController {
         return "two-cols-layout";
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
     public String logout(Model model) {
         model.addAttribute("content", "logout");
         return "two-cols-layout";
     }
 
-    @RequestMapping(value="/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("content", "register");
         return "two-cols-layout";
     }
 
-    @RequestMapping(value="/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerSubmit(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("content", "register");

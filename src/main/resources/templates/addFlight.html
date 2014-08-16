@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <title th:fragment="title">Add a Flight</title>
 </head>
@@ -16,8 +16,8 @@
     </div>
 
     <div class="row">
-		<form action="#" th:action="@{/addFlight}" th:object="${flight}" method="post">
-		    <table class="table">
+        <form action="#" th:action="@{/user/addFlight}" th:object="${flight}" method="post">
+        <table class="table">
 		        <tr>
 		            <td>Flight Carrier: </td>
 		            <td><input class="dropdown" id="carrier" type="text" th:field="*{carrier}"/></td>
