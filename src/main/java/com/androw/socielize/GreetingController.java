@@ -1,6 +1,6 @@
 package com.androw.socielize;
 
-import com.androw.socielize.db.FlightDB;
+import com.androw.socielize.db.AutoCompletionDB;
 import com.androw.socielize.db.FlightRepository;
 import com.androw.socielize.db.PassengerRepository;
 import com.androw.socielize.db.UserRepository;
@@ -20,7 +20,7 @@ import java.util.List;
 
 @Controller
 public class GreetingController {
-    private static FlightDB db = new FlightDB();
+    private static AutoCompletionDB db = new AutoCompletionDB();
 
     @Autowired
     private UserRepository users;
