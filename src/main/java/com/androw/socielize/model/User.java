@@ -6,43 +6,40 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.social.security.SocialUser;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by Androw on 12/08/2014.
  */
 @Document(collection = "users")
-public class User implements Serializable  {
+public class User implements Serializable {
     @Id
     private String id;
 
     @NotNull
     @NotEmpty
-    @Size(min=1, max=20)
+    @Size(min = 1, max = 20)
     private String firstName;
 
     @NotEmpty
     @NotNull
-    @Size(min=1, max=20)
+    @Size(min = 1, max = 20)
     private String lastName;
 
     @NotEmpty
     @NotNull
     @Email
-    @Size(min=1, max=50)
+    @Size(min = 1, max = 50)
     private String email;
 
     @NotNull
     @NotEmpty
-    @Size(min=6, max=20)
+    @Size(min = 6, max = 20)
     private String password;
 
     private String desc;
@@ -55,8 +52,8 @@ public class User implements Serializable  {
     private SocialMediaService signInProvider;
 
     public User() {
-            this.role = Role.ROLE_USER;
-            this.passengers = new ArrayList<Passenger>();
+        this.role = Role.ROLE_USER;
+        this.passengers = new ArrayList<Passenger>();
     }
 
     public Role getRole() {
