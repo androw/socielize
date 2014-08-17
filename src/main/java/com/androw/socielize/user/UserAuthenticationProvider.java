@@ -1,4 +1,4 @@
-package com.androw.socielize;
+package com.androw.socielize.user;
 
 import com.androw.socielize.db.UserRepository;
 import com.androw.socielize.model.User;
@@ -35,7 +35,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         }
         ArrayList<GrantedAuthority> right = new ArrayList<GrantedAuthority>();
         right.add(new SimpleGrantedAuthority("ROLE_USER"));
-        if (user.isAdmin()) right.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        //if (user.isAdmin()) right.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         Authentication authUser = new UsernamePasswordAuthenticationToken(login.getPrincipal(), login.getCredentials(), right);
         return authUser;
     }
