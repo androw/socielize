@@ -33,6 +33,7 @@ public class GreetingController {
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         model.addAttribute("content", "index");
+        model.addAttribute("flights", flights.findByDateStringGreaterThanEqual("2014-08-17"));
         return "two-cols-layout";
     }
 
