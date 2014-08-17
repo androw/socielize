@@ -39,6 +39,11 @@ public class AuthController {
         return "two-cols-layout";
     }
 
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String redirectRequestToRegistrationPage() {
+        return "redirect:/register";
+    }
+
     @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
     public String logout(Model model) {
         model.addAttribute("content", "logout");
