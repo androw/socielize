@@ -16,6 +16,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,9 +34,10 @@ public class GreetingController {
 
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+        String date = (new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         model.addAttribute("name", name);
         model.addAttribute("content", "index");
-        model.addAttribute("flights", flights.findByDateStringGreaterThanEqual("2014-08-17"));
+        model.addAttribute("flights", flights.findByDateStringGreaterThanEqual(date));
         return "two-cols-layout";
     }
 
@@ -101,6 +105,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/user/onFlight/{flightId}")
     public String addFlight(@PathVariable("flightId") String flightId, @RequestParam(value = "date", required = false, defaultValue = "today") String date, Model model) {
+        if (date.equals("today")) date = (new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         User currUser = getCurrentUser();
         Flight search = new Flight(flightId.substring(0, 2), flightId.substring(2), date);
         Flight oldFlight = flights.findByCarrierAndFlightNumberAndDateString(search.getCarrier(), search.getFlightNumber(), search.getDateString());
