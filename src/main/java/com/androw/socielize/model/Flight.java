@@ -69,7 +69,7 @@ public class Flight implements Serializable {
     }
 
     public void setCarrier(String carrier) {
-        this.carrier = carrier;
+        this.carrier = carrier.toUpperCase();
     }
 
     public String getFlightNumber() {
