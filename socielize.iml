@@ -67,7 +67,6 @@
     <orderEntry type="library" exported="" name="Gradle: mongo-java-driver-2.12.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-data-mongodb-1.6.0.BUILD-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-data-commons-1.9.0.BUILD-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: spring-social-facebook-1.1.1.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-social-twitter-1.1.0.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jackson-annotations-2.3.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-social-config-1.1.0.RELEASE" level="project" />
@@ -75,8 +74,8 @@
     <orderEntry type="library" exported="" name="Gradle: spring-security-crypto-3.2.3.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-social-web-1.1.0.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.inject-1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: unresolved_dependency___org_springframework_social_spring_social_" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-social-security-1.1.0.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-social-facebook-2.0.0.M1" level="project" />
   </component>
 </module>
 
