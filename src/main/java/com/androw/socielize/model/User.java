@@ -6,32 +6,38 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.social.security.SocialUser;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by Androw on 12/08/2014.
  */
 @Document(collection = "users")
-public class User implements Serializable {
+public class User implements Serializable  {
     @Id
     private String id;
 
     @NotNull
     @NotEmpty
+    @Size(min=1, max=20)
     private String firstName;
 
     @NotEmpty
     @NotNull
+    @Size(min=1, max=20)
     private String lastName;
 
     @NotEmpty
     @NotNull
     @Email
+    @Size(min=1, max=50)
     private String email;
 
     @NotNull
@@ -40,19 +46,41 @@ public class User implements Serializable {
     private String password;
 
     private String desc;
+
     @DBRef
     private List<Passenger> passengers;
 
-    public User(String email, String firstName, String lastName) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.desc = "";
-        this.passengers = new ArrayList<Passenger>();
-    }
+    private Role role;
+
+    private SocialMediaService signInProvider;
 
     public User() {
-        this.passengers = new ArrayList<Passenger>();
+            this.role = Role.ROLE_USER;
+            this.passengers = new ArrayList<Passenger>();
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean isNormalRegistration() {
+        return signInProvider == null;
+    }
+
+    public boolean isSocialSignIn() {
+        return signInProvider != null;
+    }
+
+    public SocialMediaService getSignInProvider() {
+        return signInProvider;
+    }
+
+    public void setSignInProvider(SocialMediaService signInProvider) {
+        this.signInProvider = signInProvider;
     }
 
     public String getPassword() {
@@ -106,10 +134,6 @@ public class User implements Serializable {
     public void addPassenger(Passenger passenger) {
         if (!this.passengers.contains(passenger))
             this.passengers.add(passenger);
-    }
-
-    public boolean isAdmin() {
-        return false;
     }
 
     public List<Flight> getFlights() {
