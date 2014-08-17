@@ -34,8 +34,8 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("Bad credentials");
         }
         ArrayList<GrantedAuthority> right = new ArrayList<GrantedAuthority>();
-        right.add(new SimpleGrantedAuthority("ROLE_USER"));
-        //if (user.isAdmin()) right.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+
+        right.add(new SimpleGrantedAuthority(user.getRole().toString()));
         Authentication authUser = new UsernamePasswordAuthenticationToken(login.getPrincipal(), login.getCredentials(), right);
         return authUser;
     }
