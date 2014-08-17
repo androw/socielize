@@ -5,6 +5,7 @@ import com.androw.socielize.model.SocialMediaService;
 import com.androw.socielize.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;
 import org.springframework.social.connect.UserProfile;
@@ -30,7 +31,7 @@ public class AuthController {
     private UserRepository users;
 
     @Autowired
-    private ShaPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping("/login")
     public String login(Model model) {
@@ -62,7 +63,7 @@ public class AuthController {
             model.addAttribute("content", "register");
             return "two-cols-layout";
         }  else {
-            user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             users.save(user);
             new ProviderSignInUtils().doPostSignUp(user.getEmail(), request);
             return "redirect:/login";
