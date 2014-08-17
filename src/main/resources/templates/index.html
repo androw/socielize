@@ -5,12 +5,16 @@
 </head>
 <body>
 <div th:fragment="content">
-    <h1>Hello, world!</h1>
+    <div class="page-header">
+        <h1>Hello, world!</h1>
 
-    <p th:text="'Hello, ' + ${name} + '!'"/>
+        <p th:text="'Hello, ' + ${name} + '!'"/>
+    </div>
+
 
     <div class="row">
         <div class="col-md-6">
+            <h3>Our next flights</h3>
             <table class="table">
                 <thead>
                 <tr>
@@ -27,6 +31,13 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="col-md-4 col-md-offset-2">
+            <h3>Statistics</h3>
+            <p th:text="'Passengers: ' + ${passnb}"/>
+            <p th:text="'Users: ' + ${usersnb}"/>
+            <p th:text="'Flights: ' + ${flightsnb}"/>
         </div>
     </div>
 </div>

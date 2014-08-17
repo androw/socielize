@@ -34,10 +34,12 @@ public class GreetingController {
 
     @RequestMapping("/")
     public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
-        String date = (new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         model.addAttribute("name", name);
+        model.addAttribute("flights", flights.findByDateStringGreaterThanEqual(new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+        model.addAttribute("flightsnb", flights.count());
+        model.addAttribute("passnb", passengers.count());
+        model.addAttribute("usersnb", users.count());
         model.addAttribute("content", "index");
-        model.addAttribute("flights", flights.findByDateStringGreaterThanEqual(date));
         return "two-cols-layout";
     }
 
