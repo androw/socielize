@@ -1,6 +1,7 @@
 package com.androw.socielize.model;
 
 
+import com.androw.socielize.model.oauth.SocialMediaService;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;

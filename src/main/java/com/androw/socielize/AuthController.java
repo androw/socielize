@@ -1,10 +1,9 @@
 package com.androw.socielize;
 
 import com.androw.socielize.db.UserRepository;
-import com.androw.socielize.model.SocialMediaService;
 import com.androw.socielize.model.User;
+import com.androw.socielize.model.oauth.SocialMediaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;
@@ -67,7 +66,7 @@ public class AuthController {
         if (result.hasErrors()) {
             model.addAttribute("content", "register");
             return "two-cols-layout";
-        }  else {
+        } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             users.save(user);
             new ProviderSignInUtils().doPostSignUp(user.getEmail(), request);

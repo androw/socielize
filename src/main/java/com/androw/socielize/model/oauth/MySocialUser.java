@@ -1,7 +1,6 @@
 package com.androw.socielize.model.oauth;
 
 import com.androw.socielize.model.Role;
-import com.androw.socielize.model.SocialMediaService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.social.security.SocialUser;
 

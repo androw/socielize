@@ -1,4 +1,4 @@
-package com.androw.socielize.model;
+package com.androw.socielize.model.oauth;
 
 /**
  * Created by Androw on 17/08/2014.
