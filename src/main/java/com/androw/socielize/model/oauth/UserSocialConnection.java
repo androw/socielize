@@ -20,7 +20,6 @@ public class UserSocialConnection {//} extends BaseEntity {
     private Long expireTime;
 
     public UserSocialConnection() {
-        System.out.println("New");
         //super();
     }
 
@@ -28,7 +27,6 @@ public class UserSocialConnection {//} extends BaseEntity {
                                 String displayName, String profileUrl, String imageUrl, String accessToken, String secret,
                                 String refreshToken, Long expireTime) {
         //super();
-        System.out.println("New");
         this.userId = userId;
         this.providerId = providerId;
         this.providerUserId = providerUserId;
